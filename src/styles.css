@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  background: #07080b;
+  color: #e7e1d6;
+  font-family: Barlow, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  touch-action: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.game-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  touch-action: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: transparent;
+}
+
+button,
+input,
+select,
+a,
+label {
+  pointer-events: auto;
+}
+
+.panel {
+  pointer-events: auto;
+}
+
+.crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+
+.crosshair i {
+  position: absolute;
+  background: #dff5c8;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.65);
+}
+
+.crosshair .dot {
+  width: 2px;
+  height: 2px;
+  left: -1px;
+  top: -1px;
+}
+
+.crosshair .u,
+.crosshair .d,
+.crosshair .l,
+.crosshair .r {
+  width: 2px;
+  height: 8px;
+}
+
+.crosshair .l,
+.crosshair .r {
+  width: 8px;
+  height: 2px;
+}
+
+.scope {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(#050607, #050607) left / calc(50% - 168px) 100% no-repeat,
+    linear-gradient(#050607, #050607) right / calc(50% - 168px) 100% no-repeat,
+    linear-gradient(#050607, #050607) top / 100% calc(50% - 168px) no-repeat,
+    linear-gradient(#050607, #050607) bottom / 100% calc(50% - 168px) no-repeat,
+    radial-gradient(circle at center, transparent 166px, #050607 168px);
+  pointer-events: none;
+}
+
+.scope.tight {
+  background:
+    linear-gradient(#050607, #050607) left / calc(50% - 92px) 100% no-repeat,
+    linear-gradient(#050607, #050607) right / calc(50% - 92px) 100% no-repeat,
+    linear-gradient(#050607, #050607) top / 100% calc(50% - 92px) no-repeat,
+    linear-gradient(#050607, #050607) bottom / 100% calc(50% - 92px) no-repeat,
+    radial-gradient(circle at center, transparent 90px, #050607 92px);
+}
+
+.scope::before,
+.scope::after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.scope::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+
+.scope::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.dmg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 220px;
+  margin: -110px;
+  border-radius: 50%;
+  border: 10px solid transparent;
+  border-top-color: rgba(255, 70, 60, 0.9);
+  transform: rotate(var(--ang));
+  pointer-events: none;
+  filter: blur(0.2px);
+}
+
+.hitmark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px;
+}
+
+.hitmark i {
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #fff;
+}
+
+.hitmark.head i {
+  background: #ff4d3a;
+}
+
+.hitmark i:nth-child(1) { transform: translate(4px, 1px) rotate(45deg); }
+.hitmark i:nth-child(2) { transform: translate(-4px, 1px) rotate(-45deg); }
+.hitmark i:nth-child(3) { transform: translate(4px, 11px) rotate(-45deg); }
+.hitmark i:nth-child(4) { transform: translate(-4px, 11px) rotate(45deg); }
